@@ -26,7 +26,7 @@ def main():
     site = input("Masukkan alamat URL yang ingin discrape: ")
     scrape(site)
     print("=========================")
-    print("Created by Ariful")
+    print("Created by Cak Mad")
 
 if __name__ == "__main__":
     main()
