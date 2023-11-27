@@ -1,5 +1,5 @@
 # scraper
-Tool scraping yang canggih & fleksibel, dirancang utk mengumpulkan URL dari situs web yg ditargetkan secara efisien dan sistematis. Menggunakan library requests & BeautifulSoup4, scraper ini dapat menavigasi melalui halaman-halaman web & mengekstrak link dgn kemampuan utk menyimpan hasilnya dalam file teks.<br>
+Tool scraping yang canggih & fleksibel, dirancang utk mengumpulkan URL dari situs web yg ditargetkan secara efisien dan sistematis. Menggunakan library requests & BeautifulSoup4, scraper ini dapat menavigasi melalui halaman2 web & mengekstrak link dgn kemampuan utk menyimpan outputnya dalam file teks.<br>
 <b>Cara instalasi:</b><br><br>
 Masuk ke terminal Windows 10 atau Linux<br>
 git clone https://github.com/moh-ariful/scraper.git<br>
