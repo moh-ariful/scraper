@@ -5,11 +5,10 @@ from collections import deque
 import pyfiglet
 from termcolor import colored
 
-# Buat ASCII art utk teks "SCRAPER"
+# Buat ASCII art untuk teks "SCRAPER-TOOL"
 ascii_banner = pyfiglet.figlet_format("SCRAPER-TOOL")
-print(colored(ascii_banner, 'yellow'))  # Mencetak "SCRAPER" dalam huruf kapital berukuran besar dan berwarna kuning
+print(colored(ascii_banner, 'yellow'))  # Mencetak "SCRAPER-TOOL" dalam huruf kapital berukuran besar dan berwarna kuning
 print(colored("Created by Cak Mad", 'green'))  # Mencetak "Created by Cak Mad" berwarna hijau terang
-
 
 def clean_url(url):
     # Membersihkan URL dari query string untuk menghindari duplikasi karena parameter yang berubah
@@ -17,9 +16,18 @@ def clean_url(url):
     cleaned_url = parsed_url.scheme + "://" + parsed_url.netloc + parsed_url.path
     return cleaned_url
 
-def scrape(site, depth=2, output_file="output.txt"):
+def scrape(site, depth=2, output_file="output.txt", use_tor=False):
     visited = set()
     queue = deque([(site, 0)])
+    
+    session = requests.session()
+    if use_tor:
+        # Konfigurasi permintaan untuk menggunakan Tor
+        proxies = {
+            'http': 'socks5h://localhost:9050',
+            'https': 'socks5h://localhost:9050'
+        }
+        session.proxies.update(proxies)
 
     with open(output_file, "w") as file:
         while queue:
@@ -28,7 +36,8 @@ def scrape(site, depth=2, output_file="output.txt"):
                 break
 
             try:
-                page = requests.get(current_url)
+                # Gunakan session dengan atau tanpa proxy Tor
+                page = session.get(current_url)
                 page.raise_for_status()
                 soup = BeautifulSoup(page.text, 'html.parser')
 
@@ -52,10 +61,12 @@ def scrape(site, depth=2, output_file="output.txt"):
                 print(f"Error pada {current_url}: {e}")
 
 def main():
+    use_tor_input = input("Apakah ingin menggunakan Tor? (y/n): ")
+    use_tor = use_tor_input.lower() == 'y'
     site = input("Masukkan alamat URL yang ingin discrape: ")
-    scrape(site)
+    scrape(site, use_tor=use_tor)
     print("=========================")
-    print(colored("Thanks for support, Cak Mad", 'red'))
+    print(colored("Thanks, Cak Mad - nextkoding@gmail.com", 'red'))
 
 if __name__ == "__main__":
     main()
