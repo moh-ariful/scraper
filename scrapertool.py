@@ -6,7 +6,7 @@ import pyfiglet
 from termcolor import colored
 
 # Buat ASCII art utk teks "SCRAPER"
-ascii_banner = pyfiglet.figlet_format("SCRAPER")
+ascii_banner = pyfiglet.figlet_format("SCRAPER-TOOL")
 print(colored(ascii_banner, 'yellow'))  # Mencetak "SCRAPER" dalam huruf kapital berukuran besar dan berwarna kuning
 print(colored("Created by Cak Mad", 'green'))  # Mencetak "Created by Cak Mad" berwarna hijau terang
 
