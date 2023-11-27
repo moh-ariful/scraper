@@ -5,10 +5,17 @@ from collections import deque
 import pyfiglet
 from termcolor import colored
 
-# Buat ASCII art untuk teks "SCRAPER-TOOL"
+# Buat ASCII art utk teks "SCRAPER-TOOL"
 ascii_banner = pyfiglet.figlet_format("SCRAPER-TOOL")
 print(colored(ascii_banner, 'yellow'))  # Mencetak "SCRAPER-TOOL" dalam huruf kapital berukuran besar dan berwarna kuning
 print(colored("Created by Cak Mad", 'green'))  # Mencetak "Created by Cak Mad" berwarna hijau terang
+
+# Konfigurasi permintaan untuk menggunakan Tor
+# Default Tor socks proxy berjalan pada port 9050
+proxies = {
+    'http': 'socks5h://localhost:9050',
+    'https': 'socks5h://localhost:9050'
+}
 
 def clean_url(url):
     # Membersihkan URL dari query string untuk menghindari duplikasi karena parameter yang berubah
@@ -16,18 +23,9 @@ def clean_url(url):
     cleaned_url = parsed_url.scheme + "://" + parsed_url.netloc + parsed_url.path
     return cleaned_url
 
-def scrape(site, depth=2, output_file="output.txt", use_tor=False):
+def scrape(site, depth=2, output_file="output.txt"):
     visited = set()
     queue = deque([(site, 0)])
-    
-    session = requests.session()
-    if use_tor:
-        # Konfigurasi permintaan untuk menggunakan Tor
-        proxies = {
-            'http': 'socks5h://localhost:9050',
-            'https': 'socks5h://localhost:9050'
-        }
-        session.proxies.update(proxies)
 
     with open(output_file, "w") as file:
         while queue:
@@ -36,8 +34,8 @@ def scrape(site, depth=2, output_file="output.txt", use_tor=False):
                 break
 
             try:
-                # Gunakan session dengan atau tanpa proxy Tor
-                page = session.get(current_url)
+                # Tambahkan argumen proxies ke permintaan
+                page = requests.get(current_url, proxies=proxies)
                 page.raise_for_status()
                 soup = BeautifulSoup(page.text, 'html.parser')
 
@@ -61,10 +59,8 @@ def scrape(site, depth=2, output_file="output.txt", use_tor=False):
                 print(f"Error pada {current_url}: {e}")
 
 def main():
-    use_tor_input = input("Apakah ingin menggunakan Tor? (y/n): ")
-    use_tor = use_tor_input.lower() == 'y'
     site = input("Masukkan alamat URL yang ingin discrape: ")
-    scrape(site, use_tor=use_tor)
+    scrape(site)
     print("=========================")
     print(colored("Thanks, Cak Mad - nextkoding@gmail.com", 'red'))
 
