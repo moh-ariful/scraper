@@ -6,5 +6,5 @@ git clone https://github.com/moh-ariful/streamlit-chatbot-gpt4.git<br>
 jalankan -> cd scraper <br>
 Lalu jalankan perintah -> pip install -r requirements.txt <br>
 Apabila di Linux -> pip3 install -r requirements.txt <br>
-Setelah selesai menginstall librari requirements.txt,<br> <br>
+Setelah selesai menginstall library dari requirements.txt,<br> <br>
 disusul dengan python scrapertool.py atau python3 scrapertool.py di Linux.<br>
