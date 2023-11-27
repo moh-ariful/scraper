@@ -1,5 +1,5 @@
 # scraper
-Script ini bertujuan mencari semua link (tag 'a') pada halaman web dan mencetak teks dan alamat dari setiap link tersebut. <br>
+alat scraping yang canggih dan fleksibel, dirancang untuk mengumpulkan URL dari situs web yang ditargetkan secara efisien dan sistematis. Menggunakan pustaka requests dan BeautifulSoup4, scraper ini dapat menavigasi melalui halaman-halaman web dan mengekstrak link dengan kemampuan untuk menyimpan hasilnya dalam berkas teks.<br>
 <b>Cara instalasi:</b><br><br>
 Masuk ke terminal Windows 10 atau Linux<br>
 git clone https://github.com/moh-ariful/scraper.git<br>
