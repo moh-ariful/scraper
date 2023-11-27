@@ -1,6 +1,6 @@
 # scraper
 Script ini bertujuan mencari semua link (tag 'a') pada halaman web dan mencetak teks dan alamat dari setiap link tersebut. <br>
-<b>Cara instalasi:</b>
+<b>Cara instalasi:</b><br>
 Masuk ke terminal Windows 10 atau Linux
 git clone https://github.com/moh-ariful/streamlit-chatbot-gpt4.git
 jalankan -> cd scraper <br>
