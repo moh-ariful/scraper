@@ -7,4 +7,5 @@ jalankan -> cd scraper <br>
 Lalu jalankan perintah -> pip install -r requirements.txt <br>
 Apabila di Linux -> pip3 install -r requirements.txt <br>
 Setelah selesai menginstall library dari requirements.txt,<br> <br>
-disusul dengan python scrapertool.py atau python3 scrapertool.py di Linux.<br>
+disusul dengan perintah di terminal -> python scrapertool.py<br> 
+atau python3 scrapertool.py di Linux.<br>
